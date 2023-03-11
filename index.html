@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clock</title>
+    <style>
+    #clock-holder {
+  margin: 0 auto;
+  background-color: aquamarine;
+  width: 30rem;
+  height: 20rem;
+  position: relative;
+}
+h1 {
+  background-color: blue;
+  text-align: center;
+  color: white;
+  border-radius: 41px;
+  box-shadow: 5px 5px 20px 12px black;
+}
+#clock-wraper {
+  background-color: rgb(2, 2, 2);
+  height: 5rem;
+  width: 10rem;
+  margin: auto;
+  position: absolute;
+  left: 30%;
+  top: 40%;
+  color: red;
+  border-radius: 30px;
+}
+#timer {
+  text-align: center;
+  vertical-align: center;
+  font-size: larger;
+  font-weight: 800;
+  font-family: "Times New Roman", Times, serif;
+}
+.clone {
+  animation-name: clone;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  animation-direction: forwards;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+@keyframes clone {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+</style>
+    
+  </head>
+  <body>
+    <div id="clock-holder">
+      <h1>Digital Watch</h1>
+      <div id="clock-wraper">
+        <p id="timer">
+          <span id="hours">00</span>
+          <span class="clone">:</span>
+          <span id="minutes">00</span>
+          <span class="clone">:</span>
+          <span id="sec">00</span>
+        </p>
+        <!-- <p id="clone">:</p> -->
+      </div>
+    </div>
+
+    <script>
+    const p = document.querySelector("#timer");
+const c = document.querySelector(".clone");
+const h = document.getElementById("hours");
+const m = document.getElementById("minutes");
+const s = document.getElementById("sec");
+
+setInterval(() => {
+  let date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  hours = format(hours);
+
+  minutes = format(minutes);
+  seconds = format(seconds);
+  hours = h.textContent = hours;
+  minutes = m.textContent = minutes;
+  seconds = s.textContent = seconds;
+}, 1000);
+
+function format(value) {
+  if (value < 10) {
+    value = "0" + value;
+  }
+  return value;
+}
+    </script>
+  </body>
+</html>
